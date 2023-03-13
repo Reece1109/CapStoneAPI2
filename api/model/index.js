@@ -1,5 +1,5 @@
 // Database configuration
-const db = require('../config');
+const db = require('../config/index');
 
 // bcrypt module
 const {hash, compare, hashSync } = require('bcrypt');

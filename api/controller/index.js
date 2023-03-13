@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const route = express.Router();
 
 // The Models
-const {User, Product} = require('../models/index');
+const {User, Product} = require('../model/index');
 
 // How to Create a user instance
 const user = new User();
