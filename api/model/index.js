@@ -175,10 +175,7 @@ class Product {
     addProduct(req, res) {
         let data = req.body;
         const Qry =
-        `
-        INSERT INTO AirBnB
-        SET ?;
-        `;
+        `INSERT INTO AirBnB SET ?;`;
         db.query(Qry,[data],
             (err)=> {
                 if(err){
