@@ -106,7 +106,7 @@ class User {
         SET ?;`;
         db.query(Qry, [detail], (err)=> {
             if(err) {
-                res.status(401).json({err});
+                res.status(401).json({err}), console.log(err);
             }else {
                 // How to create a token
                 const jwToken = createToken(user);
@@ -157,19 +157,15 @@ class User {
 // Product
 class Product {
     fetchProducts(req, res) {
-        const Qry = `SELECT id, prodName, prodDescription,
-        category, prodPrice, prodQuantity, imgURL
-        FROM Products;`;
+        const Qry = `SELECT * FROM AirBnB`
         db.query(Qry, (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
     }
     fetchProduct(req, res) {
-        const Qry = `SELECT id, prodName, prodDescription,
-        levels, prodPrice, prodQuantity, imgURL
-        FROM products
-        WHERE id = ?;`;
+        const Qry = `SELECT * FROM AirBnB 
+        WHERE AirBNB_id = ?`;
         db.query(Qry, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
