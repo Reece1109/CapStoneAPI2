@@ -74,7 +74,7 @@ class User {
         `
         SELECT userID, firstName, lastName, gender, cellphoneNumber, emailAdd, userRole, userProfile, joinDate, cart
         FROM Users
-        WHERE userID = ?;
+        WHERE user_id = ?;
         `;
 
         // Results db
@@ -129,7 +129,7 @@ class User {
         `
         UPDATE Users
         SET ?
-        WHERE userID = ?;
+        WHERE user_id = ?;
         `;
         // Update db
         db.query(Qry,[data, req.params.id],
@@ -143,7 +143,7 @@ class User {
         const Qry =
         `
         DELETE FROM Users
-        WHERE userID = ?;
+        WHERE user_id = ?;
         `;
         //Remove Database (db)
         db.query(Qry,[req.params.id],
@@ -164,7 +164,7 @@ class Product {
         });
     }
     fetchProduct(req, res) {
-        const Qry = `SELECT * FROM AirBnB 
+        const Qry = `SELECT * FROM AirBnB
         WHERE AirBNB_id = ?`;
         db.query(Qry, [req.params.id], (err, results)=> {
             if(err) throw err;
@@ -176,7 +176,7 @@ class Product {
         let data = req.body;
         const Qry =
         `
-        INSERT INTO Products
+        INSERT INTO AirBnB
         SET ?;
         `;
         db.query(Qry,[data],
@@ -193,9 +193,9 @@ class Product {
     updateProduct(req, res) {
         const Qry =
         `
-        UPDATE Products
+        UPDATE AirBnB
         SET ?
-        WHERE id = ?
+        WHERE AirBnb_id = ?
         `;
         db.query(Qry,[req.body, req.params.id],
             (err)=> {
@@ -211,8 +211,8 @@ class Product {
     deleteProduct(req, res) {
         const Qry =
         `
-        DELETE FROM Products
-        WHERE id = ?;
+        DELETE FROM AirBnB
+        WHERE AirBnb_id = ?;
         `;
         db.query(Qry,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
